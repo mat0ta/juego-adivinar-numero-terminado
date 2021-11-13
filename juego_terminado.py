@@ -9,7 +9,12 @@ class juegoterminado():
         self.intentos_permitidos = 10
         self.intentos_realizados = 0
     def  perdir_dificultad(self, nivel):
-        while not nivel.isdigit() and 1 >= nivel <= 4:
+        while not nivel.isdigit():
             nivel = input('Introduzca un número válido: ')
-        self.dificultad = nivel
+        while int(nivel) < 1 or int(nivel) > 4:
+            nivel = input('Introduzca un número válido: ')
+        self.dificultad = int(nivel)
+        print('Dificultad seleccionada: ' + str(self.dificultad))
 
+a = juegoterminado()
+a.perdir_dificultad(input('Elige el nivel de dificultad entre 1 y 4: '))
