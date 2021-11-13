@@ -7,7 +7,7 @@ class juegoterminado():
         self.tabla_puntuaciones = []
         self.nombre = str
         self.dificultad = 1
-        self.intentos_permitidos = 10
+        self.intentos_permitidos = 1
         self.intentos_realizados = 0
         self.numero_maximo = 100
     def pedir_nombre(self, nombre):
@@ -23,22 +23,31 @@ class juegoterminado():
     def iniciar_juego(self, numero):
         numeroDado = input('Introcude un número del 1 al ' + str(self.numero_maximo) + ': ')
         while int(numeroDado) != int(numero):
-            if int(numeroDado) < int(numero):
+            if int(numeroDado) < int(numero) and self.intentos_realizados < self.intentos_permitidos:
                 self.intentos_realizados += 1
                 print('--------------')
                 print('| ' + str(self.intentos_realizados) + ' intentos |')
                 print('--------------')
                 numeroDado = input('Te has quedado corto. Inténtalo de nuevo: ')
-            elif int(numeroDado) > int(numero):
+            elif int(numeroDado) > int(numero) and self.intentos_realizados < self.intentos_permitidos:
                 self.intentos_realizados += 1
                 print('--------------')
                 print('| ' + str(self.intentos_realizados) + ' intentos |')
                 print('--------------')
                 numeroDado = input('Te has pasado. Inténtalo de nuevo: ')
+            elif self.intentos_realizados >= self.intentos_permitidos:
+                return print('Has agotado todos tus intentos. Game over.')
         self.intentos_realizados += 1
         print('--------------------------------------------')
         print('¡Enhorabuena, lo has acertado en ' + str(self.intentos_realizados) + ' intento(s)!')
         print('--------------------------------------------')
+    def entrada_tabla(self):
+        entrada = {
+            'nombre': self.nombre,
+            'intentos': self.intentos_realizados,
+            'dificultad': self.dificultad,
+
+        }
 
 
 
