@@ -21,7 +21,24 @@ class juegoterminado():
         self.numero_maximo = 100 ** int(self.dificultad)
         print('Dificultad seleccionada: ' + str(self.dificultad))
     def iniciar_juego(self, numero):
-        numeroDado = input('Introcude un número del 1 al ' + str(self.numero_maximo))
+        numeroDado = input('Introcude un número del 1 al ' + str(self.numero_maximo) + ': ')
+        while int(numeroDado) != int(numero):
+            if int(numeroDado) < int(numero):
+                self.intentos_realizados += 1
+                print('--------------')
+                print('| ' + str(self.intentos_realizados) + ' intentos |')
+                print('--------------')
+                numeroDado = input('Te has quedado corto. Inténtalo de nuevo: ')
+            elif int(numeroDado) > int(numero):
+                self.intentos_realizados += 1
+                print('--------------')
+                print('| ' + str(self.intentos_realizados) + ' intentos |')
+                print('--------------')
+                numeroDado = input('Te has pasado. Inténtalo de nuevo: ')
+        self.intentos_realizados += 1
+        print('--------------------------------------------')
+        print('¡Enhorabuena, lo has acertado en ' + str(self.intentos_realizados) + ' intento(s)!')
+        print('--------------------------------------------')
 
 
 
