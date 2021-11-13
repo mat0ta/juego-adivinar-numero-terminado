@@ -9,17 +9,20 @@ class juegoterminado():
         self.dificultad = 1
         self.intentos_permitidos = 10
         self.intentos_realizados = 0
+        self.numero_maximo = 100
     def pedir_nombre(self, nombre):
         self.nombre = str(nombre)
-    def  perdir_dificultad(self, nivel):
+    def perdir_dificultad(self, nivel):
         while not nivel.isdigit():
             nivel = input('Introduzca un número válido: ')
         while int(nivel) < 1 or int(nivel) > 4:
             nivel = input('Introduzca un número válido: ')
         self.dificultad = int(nivel)
+        self.numero_maximo = 100 ** int(self.dificultad)
         print('Dificultad seleccionada: ' + str(self.dificultad))
-    def definir_parametros(self):
-        self.intentos_permitidos = 100 ** int(self.dificultad)
+    def iniciar_juego(self, numero):
+        numeroDado = input('Introcude un número del 1 al ' + str(self.numero_maximo))
+
 
 
 a = juegoterminado()
